@@ -16,7 +16,7 @@ import { api } from 'boot/axios'
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     state: {
-      products: [1, 2, 3]
+      products: []
     },
     mutations: {
       loadProducts (state, products) {

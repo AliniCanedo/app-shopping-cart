@@ -1,26 +1,24 @@
 <template>
   <div class="q-pa-lg">
     <div class="row justify-center">
-      <div class="col-lg-3">
+      <div class="col-lg-3" v-for="(product, index) in this.products" :key="index">
         <q-card class="wrapper-card">
-          <q-img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" />
-
+          <q-img :src="product.image" :ratio="1"/>
           <q-card-section>
             <div class="row no-wrap items-center">
               <div class="col text-h6 ellipsis">
-                Fjallraven - Foldsack No.
+                {{product.title}}
               </div>
             </div>
-
-            <q-rating v-model="stars" :max="5" size="32px" />
+            <q-rating v-model="product.rating.rate" :max="5" size="32px" />
           </q-card-section>
 
           <q-card-section class="q-pt-none">
             <div class="text-subtitle1">
-              R$ 109.95
+              R$ {{product.price.toFixed(2)}}
             </div>
             <div class="text-caption text-grey">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              {{product.description}}
             </div>
           </q-card-section>
 
@@ -28,71 +26,7 @@
 
           <q-card-actions>
             <q-btn flat color="primary">
-              Adicionar ao carrinho
-            </q-btn>
-          </q-card-actions>
-        </q-card>
-      </div>
-      <div class="col-lg-3">
-        <q-card class="wrapper-card">
-          <q-img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" />
-
-          <q-card-section>
-            <div class="row no-wrap items-center">
-              <div class="col text-h6 ellipsis">
-                Fjallraven - Foldsack No.
-              </div>
-            </div>
-
-            <q-rating v-model="stars" :max="5" size="32px" />
-          </q-card-section>
-
-          <q-card-section class="q-pt-none">
-            <div class="text-subtitle1">
-              R$ 109.95
-            </div>
-            <div class="text-caption text-grey">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </div>
-          </q-card-section>
-
-          <q-separator />
-
-          <q-card-actions>
-            <q-btn flat color="primary">
-              Adicionar ao carrinho
-            </q-btn>
-          </q-card-actions>
-        </q-card>
-      </div>
-      <div class="col-lg-3">
-        <q-card class="wrapper-card">
-          <q-img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" />
-
-          <q-card-section>
-            <div class="row no-wrap items-center">
-              <div class="col text-h6 ellipsis">
-                Fjallraven - Foldsack No.
-              </div>
-            </div>
-
-            <q-rating v-model="stars" :max="5" size="32px" />
-          </q-card-section>
-
-          <q-card-section class="q-pt-none">
-            <div class="text-subtitle1">
-              R$ 109.95
-            </div>
-            <div class="text-caption text-grey">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </div>
-          </q-card-section>
-
-          <q-separator />
-
-          <q-card-actions>
-            <q-btn flat color="primary">
-              Adicionar ao carrinho
+              Add to bag
             </q-btn>
           </q-card-actions>
         </q-card>
