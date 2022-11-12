@@ -26,6 +26,11 @@ export default store(function (/* { ssrContext } */) {
 
       addToBag (state, product) {
         state.productsInBag.push(product)
+      },
+
+      removeFromBag (state, productId) {
+        const updateBag = state.productsInBag.filter(element => productId !== element.id)
+        state.productsInBag = updateBag
       }
     },
     actions: {
@@ -37,7 +42,12 @@ export default store(function (/* { ssrContext } */) {
 
       addToBag ({ commit }, product) {
         commit('addToBag', product)
+      },
+
+      removeFromBag ({ commit }, productId) {
+        commit('removeFromBag', productId)
       }
+
     },
     modules: {
     },

@@ -2,7 +2,7 @@
   <div class="q-pa-lg">
     <div class="row justify-center">
       <div class="col-lg-3" v-for="(product, index) in this.products" :key="index">
-        <q-card class="wrapper-card">
+        <q-card class="wrapper-card" :class="{ inBag : isInBag(product) }">
           <q-img :src="product.image" :ratio="1"/>
           <q-card-section>
             <div class="row no-wrap items-center">
@@ -25,10 +25,10 @@
           <q-separator />
 
           <q-card-actions>
-            <q-btn flat color="primary" v-if="!isInBag(product)" @click="addToBag(product)">
+            <q-btn flat color="primary" v-if="!isInBag(product)" @click="this.$store.dispatch('addToBag', product)">
               Add to bag
             </q-btn>
-            <q-btn flat color="remove" v-else>
+            <q-btn flat color="remove" v-else @click="this.$store.dispatch('removeFromBag', product.id)">
               Remove to bag
             </q-btn>
           </q-card-actions>
@@ -58,10 +58,10 @@ export default {
   },
 
   methods: {
-    addToBag (product) {
-      product.quantity = 1
-      this.$store.dispatch('addToBag', product)
-    },
+    // addToBag (product) {
+    //   product.quantity = 1
+    //   this.$store.dispatch('addToBag', product)
+    // },
     isInBag (product) {
       return this.productsInBag.find(element => element.id === product.id)
     }
@@ -72,5 +72,10 @@ export default {
 <style lang="scss">
   .wrapper-card {
     margin: 10px;
+
+    &.inBag {
+      border: 1px solid #007bff;
+    }
+
   }
 </style>
