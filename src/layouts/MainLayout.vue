@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Shopping Cart Vue
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -25,12 +25,6 @@
       bordered
     >
       <q-list>
-        <q-item-label
-          header
-        >
-          Menus
-        </q-item-label>
-
         <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"
@@ -55,6 +49,12 @@ const linksList = [
     caption: '',
     icon: 'home',
     route: { name: 'home' }
+  },
+  {
+    title: 'Shopping cart',
+    caption: '',
+    icon: 'style',
+    route: { name: 'basket' }
   }
 ]
 

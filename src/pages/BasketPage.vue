@@ -1,30 +1,38 @@
 <template>
-  <div class="basket">
-    <div class="items">
+  <div class="q-pa-lg">
+    <div class="row justify-center">
+      <div class="col-lg-8 col-10">
+        <q-card class="wrapper-card">
+          <q-card-section>
+            <div class="items">
 
-      <div class="item">
-        <div class="remove">Remover Produto</div>
-        <div class="photo"><img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" alt=""></div>
-        <div class="description">Mens Casual Premium Slim Fit T-Shirts </div>
-        <div class="price">
-          <span class="quantity-area">
-            <button disabled="">-</button>
-            <span class="quantity">1</span>
-            <button>+</button>
-          </span>
-          <span class="amount">R$ 22.30</span>
+              <div class="item">
+                <div class="remove">Remover Produto</div>
+                <div class="photo"><img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" alt=""></div>
+                <div class="description">Mens Casual Premium Slim Fit T-Shirts </div>
+                <div class="price">
+                  <span class="quantity-area">
+                    <button disabled="">-</button>
+                    <span class="quantity">1</span>
+                    <button>+</button>
+                  </span>
+                  <span class="amount">R$ 22.30</span>
+                </div>
+              </div>
+              <div class="grand-total"> Total do pedido: R$ 22.30</div>
+
+            </div>
+          </q-card-section>
+        </q-card>
         </div>
       </div>
-      <div class="grand-total"> Total do pedido: R$ 22.30</div>
-
-    </div>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'Basket',
+  name: 'BasketPage',
 
   methods: {
 
@@ -35,11 +43,9 @@ export default {
 
 <style lang="scss">
 
-.basket {
-  padding: 60px 0;
-  .items {
-    max-width: 800px;
-    margin: auto;
+.q-pa-lg {
+  padding: 30px 0;
+  .wrapper-card {
     .item {
       display: flex;
       justify-content: space-between;
