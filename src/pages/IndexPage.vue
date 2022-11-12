@@ -25,8 +25,11 @@
           <q-separator />
 
           <q-card-actions>
-            <q-btn flat color="primary" @click="addToBag(product)">
+            <q-btn flat color="primary" v-if="!isInBag(product)" @click="addToBag(product)">
               Add to bag
+            </q-btn>
+            <q-btn flat color="remove" v-else>
+              Remove to bag
             </q-btn>
           </q-card-actions>
         </q-card>
@@ -58,6 +61,9 @@ export default {
     addToBag (product) {
       product.quantity = 1
       this.$store.dispatch('addToBag', product)
+    },
+    isInBag (product) {
+      return this.productsInBag.find(element => element.id === product.id)
     }
   }
 }
