@@ -25,7 +25,7 @@
           <q-separator />
 
           <q-card-actions>
-            <q-btn flat color="primary">
+            <q-btn flat color="primary" @click="addToBag(product)">
               Add to bag
             </q-btn>
           </q-card-actions>
@@ -47,11 +47,18 @@ export default {
   computed: {
     products () {
       return this.$store.state.products
+    },
+
+    productsInBag () {
+      return this.$store.state.productsInBag
     }
   },
 
   methods: {
-
+    addToBag (product) {
+      product.quantity = 1
+      this.$store.dispatch('addToBag', product)
+    }
   }
 }
 </script>

@@ -16,11 +16,16 @@ import { api } from 'boot/axios'
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     state: {
-      products: []
+      products: [],
+      productsInBag: []
     },
     mutations: {
       loadProducts (state, products) {
         state.products = products
+      },
+
+      addToBag (state, product) {
+        state.productsInBag.push(product)
       }
     },
     actions: {
@@ -28,6 +33,10 @@ export default store(function (/* { ssrContext } */) {
         api.get('/products').then(response => {
           commit('loadProducts', response.data)
         })
+      },
+
+      addToBag ({ commit }, product) {
+        commit('addToBag', product)
       }
     },
     modules: {
