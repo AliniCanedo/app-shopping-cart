@@ -6,7 +6,7 @@ import { mount } from '@vue/test-utils'
 describe('IndexPage', () => {
   // The component to test
   const MessageComponent = {
-    template: '<div class="col text-h6 ellipsis">{{ title }}</div>',
+    template: '<div class="col text-h6">{{ title }}</div>',
     props: ['title']
   }
 
