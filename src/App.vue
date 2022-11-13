@@ -5,10 +5,11 @@
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title>
-          Shopping Cart Vue {{ productsInBag.length }}
+          Shopping Cart Vue
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>{{ productsInBag.length <= 0 ? 'Seu carrinho está vazio' : `Você tem ${productsInBag.length} item(S) no
+        carrinho` }}</div>
       </q-toolbar>
     </q-header>
 

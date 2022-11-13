@@ -26,10 +26,10 @@
 
           <q-card-actions>
             <q-btn flat color="primary" v-if="!isInBag(product)" @click="addToBag(product)">
-              Add to bag
+              adicionar ao carrinho
             </q-btn>
             <q-btn flat color="remove" v-else @click="this.$store.dispatch('removeFromBag', product.id)">
-              Remove to bag
+              remover do carrinho
             </q-btn>
           </q-card-actions>
         </q-card>
@@ -37,6 +37,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { mapState } from 'vuex'
 
