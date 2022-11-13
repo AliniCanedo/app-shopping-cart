@@ -10,7 +10,7 @@
                 {{product.title}}
               </div>
             </div>
-            <q-rating v-model="product.rating.rate" :max="5" size="32px" />
+            <q-rating v-model="product.rating.rate" :max="5" size="20px" />
           </q-card-section>
 
           <q-card-section class="q-pt-none">
@@ -38,7 +38,7 @@
   </div>
 </template>
 <script>
-
+import { mapState } from 'vuex'
 export default {
   name: 'IndexPage',
   data () {
@@ -47,15 +47,10 @@ export default {
     }
   },
 
-  computed: {
-    products () {
-      return this.$store.state.products
-    },
-
-    productsInBag () {
-      return this.$store.state.productsInBag
-    }
-  },
+  computed: mapState([
+    'products',
+    'productsInBag'
+  ]),
 
   methods: {
     // addToBag (product) {

@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Shopping Cart Vue
+          Shopping Cart Vue {{this.productsInBag.length}}
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -42,6 +42,7 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
+import { mapState } from 'vuex'
 
 const linksList = [
   {
@@ -75,6 +76,10 @@ export default defineComponent({
         leftDrawerOpen.value = !leftDrawerOpen.value
       }
     }
-  }
+  },
+
+  computed: mapState([
+    'productsInBag'
+  ])
 })
 </script>
