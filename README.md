@@ -7,6 +7,9 @@ A Quasar Project
 2 - Quasar(https://quasar.dev/)
 3 - Vuex (https://vuex.vuejs.org/)
 4 - Axios
+5 - Jest
+
+6 - apifake (https://fakestoreapi.com)
 
 ## Install the dependencies
 ```bash
@@ -37,3 +40,8 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+
+
+### run Jest
+
+quasar test --unit jest
