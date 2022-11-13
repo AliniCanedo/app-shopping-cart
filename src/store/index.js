@@ -24,7 +24,6 @@ export default createStore({
     }
   },
   actions: {
-
     loadProducts ({ commit }) {
       api
         .get('/products')

@@ -1,12 +1,12 @@
 <template>
   <div class="q-pa-lg">
-    <div class="row justify-center">
+    <div class="row">
       <div class="col-lg-3" v-for="(product, index) in this.products" :key="index">
-        <q-card class="wrapper-card" :class="{ inBag: isInBag(product) }">
-          <q-img :src="product.image" :ratio="1" style="width: 350px;" />
+        <q-card class="wrapper-card" :class="{ inBag: isInBag(product) }" style="width: 335px; margin: 20px auto" >
+          <q-img :src="product.image" :ratio="1" style="display: initial;width: 335px;" />
           <q-card-section>
             <div class="row no-wrap items-center">
-              <div class="col text-h6 ellipsis">
+              <div class="col text-h6">
                 {{ product.title }}
               </div>
             </div>
@@ -67,11 +67,13 @@ export default {
 
 <style lang="scss">
 .wrapper-card {
-  margin: 10px;
-
   &.inBag {
     border: 1px solid #007bff;
   }
 
+}
+.q-page-container {
+  padding-top: 20px ;
+  padding-left: 145px !important;
 }
 </style>

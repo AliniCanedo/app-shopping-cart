@@ -1,4 +1,4 @@
-import { describe, expect, it } from '@jest/globals'
+import { describe, expect, it, test } from '@jest/globals'
 import { mapState } from 'vuex'
 import { mount } from '@vue/test-utils'
 
@@ -20,7 +20,7 @@ describe('BasketPage', () => {
     // Assert the rendered text of the component
     expect(wrapper.text()).toContain('Total do pedido: R$ 109.95')
   })
-    
+
   describe('mapState', () => {
     it('has productsInBag', () => {
       expect(typeof mapState.productsInBag)

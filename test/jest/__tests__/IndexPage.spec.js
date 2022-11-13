@@ -1,4 +1,4 @@
-import { describe, expect, it } from '@jest/globals'
+import { describe, expect, it, test } from '@jest/globals'
 import IndexPage from 'src/pages/IndexPage.vue'
 import { mapState } from 'vuex'
 import { mount } from '@vue/test-utils'
@@ -21,11 +21,11 @@ describe('IndexPage', () => {
     // Assert the rendered text of the component
     expect(wrapper.text()).toContain('Mens Casual Premium Slim Fit T-Shirts')
   })
-  
+
   it('has data', () => {
     expect(typeof IndexPage.data).toBe('function')
   })
-  
+
   describe('mapState', () => {
     it('has products and productsInBag', () => {
       expect(typeof mapState.products)
@@ -33,4 +33,3 @@ describe('IndexPage', () => {
     })
   })
 })
-
