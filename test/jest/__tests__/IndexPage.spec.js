@@ -1,35 +1,35 @@
 import { describe, expect, it, test } from '@jest/globals'
 import IndexPage from 'src/pages/IndexPage.vue'
-import { mapState } from 'vuex'
 import { mount } from '@vue/test-utils'
 
 describe('IndexPage', () => {
   // The component to test
-  const MessageComponent = {
-    template: '<div class="col text-h6">{{ title }}</div>',
-    props: ['title']
+  it('has data', () => {
+    expect(typeof IndexPage.data).toBe('function')
+  })
+
+  const ProductsComponent = {
+    template: `<div class="wrapper-card">
+      {{ title }}
+      {{ price }}
+      {{ description }}
+    </div>`,
+    props: ['title', 'description', 'price']
   }
 
-  test('displays message', () => {
+  test('displays Product', () => {
     // mount() returns a wrapped Vue component we can interact with
-    const wrapper = mount(MessageComponent, {
+    const wrapper = mount(ProductsComponent, {
       propsData: {
-        title: 'Mens Casual Premium Slim Fit T-Shirts'
+        title: 'Mens Casual Premium Slim Fit T-Shirts',
+        price: '109.95',
+        description: 'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday'
       }
     })
 
     // Assert the rendered text of the component
     expect(wrapper.text()).toContain('Mens Casual Premium Slim Fit T-Shirts')
-  })
-
-  it('has data', () => {
-    expect(typeof IndexPage.data).toBe('function')
-  })
-
-  describe('mapState', () => {
-    it('has products and productsInBag', () => {
-      expect(typeof mapState.products)
-      expect(typeof mapState.productsInBag)
-    })
+    expect(wrapper.text()).toContain('109.95')
+    expect(wrapper.text()).toContain('Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday')
   })
 })
