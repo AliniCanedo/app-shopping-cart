@@ -2,12 +2,12 @@
   <div class="q-pa-lg">
     <div class="row justify-center">
       <div class="col-lg-3" v-for="(product, index) in this.products" :key="index">
-        <q-card class="wrapper-card" :class="{ inBag : isInBag(product) }">
-          <q-img :src="product.image" :ratio="1"/>
+        <q-card class="wrapper-card" :class="{ inBag: isInBag(product) }">
+          <q-img :src="product.image" :ratio="1" style="width: 350px;" />
           <q-card-section>
             <div class="row no-wrap items-center">
               <div class="col text-h6 ellipsis">
-                {{product.title}}
+                {{ product.title }}
               </div>
             </div>
             <q-rating v-model="product.rating.rate" :max="5" size="20px" />
@@ -15,17 +15,17 @@
 
           <q-card-section class="q-pt-none">
             <div class="text-subtitle1">
-              R$ {{product.price.toFixed(2)}}
+              R$ {{ product.price.toFixed(2) }}
             </div>
             <div class="text-caption text-grey">
-              {{product.description}}
+              {{ product.description }}
             </div>
           </q-card-section>
 
           <q-separator />
 
           <q-card-actions>
-            <q-btn flat color="primary" v-if="!isInBag(product)" @click="this.$store.dispatch('addToBag', product)">
+            <q-btn flat color="primary" v-if="!isInBag(product)" @click="addToBag(product)">
               Add to bag
             </q-btn>
             <q-btn flat color="remove" v-else @click="this.$store.dispatch('removeFromBag', product.id)">
@@ -39,6 +39,7 @@
 </template>
 <script>
 import { mapState } from 'vuex'
+
 export default {
   name: 'IndexPage',
   data () {
@@ -46,31 +47,30 @@ export default {
 
     }
   },
-
   computed: mapState([
     'products',
     'productsInBag'
   ]),
 
   methods: {
-    // addToBag (product) {
-    //   product.quantity = 1
-    //   this.$store.dispatch('addToBag', product)
-    // },
+    addToBag (product) {
+      product.quantity = 1
+      this.$store.dispatch('addToBag', product)
+    },
     isInBag (product) {
-      return this.productsInBag.find(element => element.id === product.id)
+      return this.productsInBag.find(item => item.id === product.id)
     }
   }
 }
 </script>
 
 <style lang="scss">
-  .wrapper-card {
-    margin: 10px;
+.wrapper-card {
+  margin: 10px;
 
-    &.inBag {
-      border: 1px solid #007bff;
-    }
-
+  &.inBag {
+    border: 1px solid #007bff;
   }
+
+}
 </style>

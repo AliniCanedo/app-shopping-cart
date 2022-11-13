@@ -1,61 +1,55 @@
-import { store } from 'quasar/wrappers'
 import { createStore } from 'vuex'
 import { api } from 'boot/axios'
 
-// import example from './module-example'
-
-/*
- * If not building with SSR mode, you can
- * directly export the Store instantiation;
- *
- * The function below can be async too; either use
- * async/await or return a Promise which resolves
- * with the Store instance.
- */
-
-export default store(function (/* { ssrContext } */) {
-  const Store = createStore({
-    state: {
-      products: [],
-      productsInBag: []
+export default createStore({
+  state: {
+    products: [],
+    productsInBag: []
+  },
+  mutations: {
+    loadProducts (state, products) {
+      state.products = products
     },
-    mutations: {
-      loadProducts (state, products) {
-        state.products = products
-      },
-
-      addToBag (state, product) {
-        state.productsInBag.push(product)
-      },
-
-      removeFromBag (state, productId) {
-        const updateBag = state.productsInBag.filter(element => productId !== element.id)
-        state.productsInBag = updateBag
-      }
+    loadBag (state, products) {
+      state.productsInBag = products
     },
-    actions: {
-      loadProducts ({ commit }) {
-        api.get('/products').then(response => {
+    addToBag (state, product) {
+      state.productsInBag.push(product)
+      localStorage.setItem('productsInBag', JSON.stringify(state.productsInBag))
+    },
+    removeFromBag (state, productId) {
+      const updatedBag = state.productsInBag.filter(item => productId !== item.id)
+      state.productsInBag = updatedBag
+      localStorage.setItem('productsInBag', JSON.stringify(state.productsInBag))
+    }
+  },
+  actions: {
+
+    loadProducts ({ commit }) {
+      api
+        .get('/products')
+        .then(response => {
           commit('loadProducts', response.data)
         })
-      },
+    },
 
-      addToBag ({ commit }, product) {
-        commit('addToBag', product)
-      },
-
-      removeFromBag ({ commit }, productId) {
-        if (confirm('Are you sure you want to remove the item from bag?')) {
-          commit('removeFromBag', productId)
-        }
+    loadBag ({ commit }) {
+      if (localStorage.getItem('productsInBag')) {
+        commit('loadBag', JSON.parse(localStorage.getItem('productsInBag')))
       }
-
-    },
-    modules: {
     },
 
-    strict: process.env.DEBUGGING
-  })
+    addToBag ({ commit }, product) {
+      commit('addToBag', product)
+    },
 
-  return Store
+    removeFromBag ({ commit }, productId) {
+      if (confirm('Tem certeza que deseja remover o produto do carrinho?')) {
+        commit('removeFromBag', productId)
+      }
+    }
+
+  },
+  modules: {
+  }
 })
