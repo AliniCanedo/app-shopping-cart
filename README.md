@@ -13,9 +13,9 @@ A Quasar Project
 
 ## Install the dependencies
 ```bash
-yarn
+yarn (recommended)
 # or
-npm install
+npm install (Having trouble downloading the vue-test-utils dependency needed to create the folder in node_modules)
 ```
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
