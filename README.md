@@ -2,6 +2,11 @@
 
 A Quasar Project
 
+## Technologies used
+1 - Quasar(https://quasar.dev/)
+2 - Vuex (https://vuex.vuejs.org/)
+3 - Axios
+
 ## Install the dependencies
 ```bash
 yarn
