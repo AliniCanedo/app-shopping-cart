@@ -1,1 +1,12 @@
 /* app global css */
+
+.q-page-container {
+    padding-top: 20px !important;
+    padding-left: 145px !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .q-page-container  {
+        padding-left: 0 !important;
+    }
+}

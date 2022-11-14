@@ -73,10 +73,3 @@ export default defineComponent({
 })
 
 </script>
-
-<style lang="scss">
-.q-page-container {
-  padding-top: 20px !important;
-  padding-left: 145px !important;
-}
-</style>

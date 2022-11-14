@@ -2,11 +2,11 @@
   <div class="q-pa-lg">
     <div class="row">
       <div class="col-lg-3" v-for="(product, index) in this.products" :key="index">
-        <q-card class="wrapper-card" :class="{ inBag: isInBag(product) }" style="width: 335px; margin: 20px auto" >
-          <q-img :src="product.image" :ratio="1" style="display: initial;width: 335px;" />
+        <q-card class="wrapper-card" :class="{ inBag: isInBag(product) }" style="width: 325px; margin: 20px auto" >
+          <q-img :src="product.image" :ratio="1" style="display: initial;width: 325px;" />
           <q-card-section>
-            <div class="row no-wrap items-center">
-              <div class="col text-h6">
+            <div class="row items-center wrapper-title">
+              <div class="col text-h6 title">
                 {{ product.title }}
               </div>
             </div>
@@ -17,8 +17,10 @@
             <div class="text-subtitle1">
               R$ {{ product.price.toFixed(2) }}
             </div>
-            <div class="text-caption text-grey">
-              {{ product.description }}
+            <div class="wrapper-description">
+              <div class="text-caption text-grey">
+                {{ product.description }}
+              </div>
             </div>
           </q-card-section>
 
@@ -71,9 +73,26 @@ export default {
     border: 1px solid #007bff;
   }
 
-}
-.q-page-container {
-  padding-top: 20px ;
-  padding-left: 145px !important;
+  .wrapper-title {
+    white-space: pre-wrap;
+
+    .title {
+      font-size: 16px;
+      max-height: 40px;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+  }
+
+  .wrapper-description {
+    white-space: pre-wrap;
+
+    .text-caption {
+      max-height: 60px;
+      min-height: 50px;
+      overflow: hidden;
+      word-wrap: break-word;
+    }
+  }
 }
 </style>
